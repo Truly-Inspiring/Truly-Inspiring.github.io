@@ -15,7 +15,7 @@ document.getElementById("button").style.color = "rgb(200,200,200)";
 document.getElementById("button").setAttribute("onClick", "");
 
 window.onload = function() {
-	$.get("id.php", function(data) {
+	$.get("https://beatsturning.com/games/truly-inspiring/id.php", function(data) {
 		sessionId = data;
 		cycle();
 		run();
@@ -26,7 +26,7 @@ function cycle() {
 	if (quotes.length < 40) {
 		var requestList = sinceLastRequest;
 		sinceLastRequest = "";
-		$.get("request.php?s=" + sessionId + "&r=" + requestList, function(data) {
+		$.get("https://beatsturning.com/games/truly-inspiring/request.php?s=" + sessionId + "&r=" + requestList, function(data) {
 			audio[audio.length] = JSON.parse(data)["mp3"];
   			data = JSON.parse(data)["data"];
   			//console.log(data);
@@ -104,7 +104,7 @@ function like() {
 			encoded = btoa(encoded);
 			//alert(encoded);
 			//console.log(encoded);
-			$.get("like.php?s=" + encoded, function(data) {
+			$.get("https://beatsturning.com/games/truly-inspiring/like.php?s=" + encoded, function(data) {
 				//console.log(data);
 			});
 		}
@@ -293,7 +293,7 @@ function viewLikes() {
 	document.getElementById("likes-header").style.display = "block";
 	document.getElementById("likes-container").style.opacity = 1;
 	document.getElementById("likes-container").style.pointerEvents = "auto";
-	$.get("likes.php", function(data) {
+	$.get("https://beatsturning.com/games/truly-inspiring/likes.php", function(data) {
 		var importLikes = JSON.parse(data);
 		//console.log(importLikes);
 		var i = 0;
