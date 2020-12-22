@@ -20,9 +20,6 @@
 		<meta name="theme-color" content="#000000">
   	</head>
   	<body>
-    	<script>
-			var sessionId = <?php echo '"' . file_get_contents("https://inspirobot.me/api?getSessionID=1") . '"'; ?>;
-		</script>
 		<div id=canvasbuilder>
 			<span id=canvastext></span>
 		</div>
