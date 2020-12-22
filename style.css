@@ -251,4 +251,6 @@ body {
 	background-size: contain;
 	background-position: center;
 	cursor: pointer;
+	border: none;
+	background-color: transparent;
 }
