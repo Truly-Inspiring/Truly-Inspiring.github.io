@@ -11,10 +11,21 @@ var quoteCount = 0;
 var occupied = 1;
 var firstOne = 0;
 var sessionId = "";
+var exportWidth = 0;
+var exportHeight = 0;
 document.getElementById("button").style.color = "rgb(200,200,200)";
 document.getElementById("button").setAttribute("onClick", "");
 
 window.onload = function() {
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
+	if (urlParams.get('w') != null && urlParams.get('w') != "" & urlParams.get('w') > 0 && urlParams.get('w') != undefined && urlParams.get('w') != "undefined") {
+		exportWidth = urlParams.get('w');
+	}
+	if (urlParams.get('h') != null && urlParams.get('h') != "" & urlParams.get('h') > 0 && urlParams.get('h') != undefined && urlParams.get('h') != "undefined") {
+		exportHeight = urlParams.get('h');
+	}
+	console.log(exportWidth);
 	$.get("https://beatsturning.com/games/truly-inspiring/id.php", function(data) {
 		sessionId = data;
 		cycle();
@@ -119,6 +130,23 @@ function adjustSize() {
 	var longestWord = 0;
 	occupied = 1;
 	firstOne++;
+	console.log(exportWidth);
+	console.log(exportHeight);
+	if (exportWidth != 0 && exportHeight != 0) {
+		console.log("changing dimensions");
+		console.log(document.getElementById("canvasbuilder").clientWidth / exportWidth);
+		console.log(document.getElementById("canvasbuilder").clientHeight / exportHeight);
+		if (document.getElementById("canvasbuilder").clientWidth / exportWidth > document.getElementById("canvasbuilder").clientHeight / exportHeight) {
+			console.log("wider");
+			console.log(document.getElementById("canvasbuilder").clientHeight / exportHeight * exportWidth)
+			document.getElementById("exportcontainer").style.width = (document.getElementById("canvasbuilder").clientHeight / exportHeight * exportWidth) + "px";
+		} else {
+			console.log("taller");
+			console.log(document.getElementById("canvasbuilder").clientWidth / exportWidth * exportHeight);
+			document.getElementById("exportcontainer").style.height = (document.getElementById("canvasbuilder").clientWidth / exportWidth * exportHeight) + "px";
+		}
+		document.getElementById("quote-container").style.height = (document.getElementById("quote-container").clientWidth / exportWidth * exportHeight) + "px";
+	}
 	if (quoteCount == 1) {
 		quotes[0] = quotes[0].replace(/«/g, '"');
 		quotes[0] = quotes[0].replace(/»/g, '"');
@@ -344,9 +372,4 @@ function runLike(id, likes, key) {
 	setTimeout(function() {
 		adjustSize();
 	}, 50);
-}
-
-function closeLikes() {
-	document.getElementById("likes-container").style.opacity = 0;
-	document.getElementById("likes-container").style.pointerEvents = "none";
 }
