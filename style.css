@@ -140,7 +140,7 @@ body {
 	width: 100%;
 	background-color: black;
 	display: none;
-	z-index: 5;
+	z-index: 999;
 }
 
 #exporttext {
