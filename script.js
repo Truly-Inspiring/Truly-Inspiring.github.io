@@ -10,12 +10,16 @@ var normalFont = 0;
 var quoteCount = 0;
 var occupied = 1;
 var firstOne = 0;
+var sessionId = "";
 document.getElementById("button").style.color = "rgb(200,200,200)";
 document.getElementById("button").setAttribute("onClick", "");
 
 window.onload = function() {
-	cycle();
-	run();
+	$.get("id.php", function(data) {
+		sessionId = data;
+		cycle();
+		run();
+	});
 }
 
 function cycle() {
