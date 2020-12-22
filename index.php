@@ -1,0 +1,54 @@
+<html>
+ 	<head>
+    	<title>Truly Inspiring</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="./style.css" rel="stylesheet" type="text/css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="./html2canvas.js"></script>
+		<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="194x194" href="./favicons/favicon-194x194.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="./favicons/android-chrome-192x192.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+		<link rel="manifest" href="./favicons/site.webmanifest">
+		<link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#ff0000">
+		<link rel="shortcut icon" href="./favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#000000">
+		<meta name="msapplication-TileImage" content="./favicons/mstile-144x144.png">
+		<meta name="msapplication-config" content="./favicons/browserconfig.xml">
+		<meta name="theme-color" content="#000000">
+  	</head>
+  	<body>
+    	<script>
+			var sessionId = <?php echo '"' . file_get_contents("https://inspirobot.me/api?getSessionID=1") . '"'; ?>;
+		</script>
+		<div id=canvasbuilder>
+			<span id=canvastext></span>
+		</div>
+		<div id=exportregion>
+			<div id=exportcontainer>
+				<span id=exporttext></span>
+				<span id=exporttag><img src="./favicons/favicon-194x194.png" id=exportheart />www.trulyinspiring.tk</span>
+			</div>
+		</div>
+		<button onClick="saveQuote()" id=save></button>
+		<button onClick="viewLikes()" id=likes></button>
+		<div id=quote-container>
+			<h1 id=quote>Loading...</h1>
+		</div>
+		<audio id=audio src="" onEnded="run()"></audio>
+		<div id=like onClick="like()">
+			<div style="height:0px">
+				<div id=like-heart></div>
+			</div>
+			<span id=like-counter>0</span>
+		</div>
+		<div id=button onClick="run()">NEXT</div>
+		<div id=like-overlay></div>
+		<div id=likes-container>
+			<span id=likes-header>Grabbing our favourites...</span>
+		</div>
+	</body>
+	<script src="./script.js"></script>
+</html>
