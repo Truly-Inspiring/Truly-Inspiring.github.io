@@ -345,3 +345,8 @@ function runLike(id, likes, key) {
 		adjustSize();
 	}, 50);
 }
+
+function closeLikes() {
+	document.getElementById("likes-container").style.opacity = 0;
+	document.getElementById("likes-container").style.pointerEvents = "none";
+}
